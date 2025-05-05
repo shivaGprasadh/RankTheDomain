@@ -1,0 +1,54 @@
+# Domain Security Scanner Project Requirements
+# Updated: May 5, 2025
+
+# Core Dependencies
+flask==2.3.3
+werkzeug==2.3.7
+gunicorn==21.2.0
+dnspython==2.4.2
+requests==2.31.0
+python-whois==0.8.0
+pyOpenSSL==23.2.0
+email-validator==2.0.0
+cryptography==41.0.7
+trafilatura==1.6.2
+urllib3==2.1.0
+python-dateutil==2.8.2
+certifi==2023.11.17
+idna==3.4
+charset-normalizer==3.2.0
+Jinja2==3.1.2
+MarkupSafe==2.1.3
+itsdangerous==2.1.2
+setuptools==68.2.2
+blinker==1.6.2
+click==8.1.7
+cffi==1.15.1
+pycparser==2.21
+six==1.16.0
+packaging==23.2
+
+# Database Dependencies
+flask-sqlalchemy==3.1.1
+sqlalchemy==2.0.25
+psycopg2-binary==2.9.9
+python-dotenv==1.1.0
+
+# SSL Analysis
+sslyze==5.2.0
+
+# Background Processing
+celery==5.3.4
+redis==5.0.1
+
+# Configuration:
+# DATABASE_URL="postgresql://secops:secops@hostname:port/database"
+# REDIS_URL="redis://0.0.0.0:6379/0"
+
+# Project Improvements:
+# 1. Added background processing with Celery and Redis to handle large numbers of domains
+# 2. Added fallback mechanism when Redis is unavailable
+# 3. Added pagination dropdown to select items per page (5, 10, 25, 50, 100, 200, 500, 1000)
+# 4. Database schema includes Domain, ScanResult, and ScheduledScan models
+# 5. Security checks include headers, DNS, HTTPS, email security, SSL/TLS, WAF, and domain info
+# 6. Added scheduled scanning (every 6 hours) with auto retry on failures

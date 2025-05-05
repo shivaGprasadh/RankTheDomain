@@ -1,0 +1,135 @@
+venv) sivaprasath@apples-MacBook-Pro SubdomainShield % python app.py
+2025-05-05 11:35:05,932 - root - INFO - Using PostgreSQL database
+Traceback (most recent call last):
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 3298, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 713, in checkout
+    rec = pool._do_get()
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 675, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 901, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 897, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/engine/create.py", line 646, in connect
+    return dialect.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 625, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "domainscanner" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/sivaprasath/Desktop/SubdomainShield/app.py", line 966, in <module>
+    app = create_app()
+  File "/Users/sivaprasath/Desktop/SubdomainShield/app.py", line 69, in create_app
+    db.create_all()
+    ~~~~~~~~~~~~~^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/flask_sqlalchemy/extension.py", line 900, in create_all
+    self._call_for_binds(bind_key, "create_all")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/flask_sqlalchemy/extension.py", line 881, in _call_for_binds
+    getattr(metadata, op_name)(bind=engine)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/sql/schema.py", line 5925, in create_all
+    bind._run_ddl_visitor(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        ddl.SchemaGenerator, self, checkfirst=checkfirst, tables=tables
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 3248, in _run_ddl_visitor
+    with self.begin() as conn:
+         ~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 3238, in begin
+    with self.connect() as conn:
+         ~~~~~~~~~~~~^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 3274, in connect
+    return self._connection_cls(self)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 148, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        err, dialect, engine
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2439, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 3298, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 713, in checkout
+    rec = pool._do_get()
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 675, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 901, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/pool/base.py", line 897, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/engine/create.py", line 646, in connect
+    return dialect.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 625, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/sivaprasath/Desktop/SubdomainShield/venv/lib/python3.13/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "domainscanner" does not exist
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+(venv) sivaprasath@apples-MacBook-Pro SubdomainShield %
