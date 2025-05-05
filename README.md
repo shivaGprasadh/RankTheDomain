@@ -26,7 +26,7 @@ A comprehensive security scanning and monitoring tool for web domains. This appl
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/domain-security-scanner.git
+   git clone https://github.com/shivaGprasadh/domain-security-scanner.git
    cd domain-security-scanner
    ```
 
